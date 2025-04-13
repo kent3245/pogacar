@@ -107,11 +107,11 @@ def get_ranking(player,race_name,year):
     return None
 
 
-
 if __name__ == "__main__":
     # Example usage of the add_col function
 
     # print("Columns added successfully.")
+
     # get_metric()
 
     print(get_ranking("primož-roglič","tour-de-france",2024))
