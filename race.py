@@ -39,4 +39,4 @@ with open("racename.csv", "r", encoding="utf-8") as file:
 df = pd.DataFrame(race_data)
 
 # Optionally, if you want to check or export the DataFrame, you can print it or save to CSV
-print(df)
+df.to_csv("race_data_output.csv", index=False)

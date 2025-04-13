@@ -48,4 +48,4 @@ with open("racename.csv", "r", encoding="utf-8") as file:
 df = pd.DataFrame(all_climb_data)
 
 # Print the DataFrame to review the results or export it as needed.
-print(df)
+df.to_csv("climb_data_output.csv", index=False)
