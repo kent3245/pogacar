@@ -1,15 +1,27 @@
-# Import the necessary class from procyclingstats
-from procyclingstats import Rider
+from procyclingstats import Rider, Race
 import json
 
-# Create an instance for a specific rider
-rider = Rider("rider/tadej-pogacar")
+# Open the CSV file with the correct encoding
+with open("rider.csv", "r", encoding="utf-8") as file:
+    # Iterate over each line in the file
+    for line in file:
+        # Clean up whitespace/newline characters
+        rider_name = line.strip()
+        
+        # Skip empty lines if any
+        if not rider_name:
+            continue
+        
+        # Create an instance of Rider. Assuming the structure "rider/<rider_name>"
+        rider = Rider("rider/" + rider_name)
+        
+        # Debug: print the type to confirm the instance creation
+        print("Rider instance type for {}: {}".format(rider_name, type(rider)))
 
-# Get and print the rider's birthdate
-print("Rider Birthdate:", rider.birthdate())
+        print("Points per Season:", rider.points_per_season_history())
+        print("Points per Speciality:", rider.points_per_speciality())
 
-# Alternatively, you can parse all available data
-rider_data = rider.parse()
-print(json.dumps(rider_data, indent=4))
 
-# print("Rider Data:", rider_data)
+
+def add_col(lists,):
+    """adds column by columnm"""
