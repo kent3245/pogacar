@@ -12,4 +12,6 @@ race_climb_df = pd.merge(race_df, climb_df, on='race_name', how='left')
 # Now merge rider data with the combined race/climb data.
 # combined_df = pd.merge(rider_df, race_climb_df, on='race_name', how='inner')
 
-print(race_climb_df)
+df = pd.DataFrame(race_climb_df)
+
+df.to_csv("combine.csv", index=False)

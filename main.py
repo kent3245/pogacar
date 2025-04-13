@@ -93,18 +93,22 @@ def get_metric():
     print(lists)
     add_col(lists, path_name)
 
-def get_ranking(player,race_name,year):
-    rider_results = RiderResults(f'rider/{player}/results')
-    print(json.dumps(rider_results.parse(),indent=4))
-    did_participate = False
-    for result in rider_results.parse()["results"]:
-        if f'race/{race_name}/{year}/gc' == result["stage_url"]:
-            return result["rank"]
-        if f'race/{race_name}/{year}' in result["stage_url"]:
-            did_participate = True
-    if did_participate:
-        return "Did not finish"
-    return None
+# def get_ranking(player,race_name,year):
+#     rider_results = RiderResults(f'rider/{player}/results')
+#     print(json.dumps(rider_results.parse(),indent=4))
+#     did_participate = False
+#     for result in rider_results.parse()["results"]:
+#         try:
+#             if f'race/{race_name}/{year}/gc' == result["stage_url"]:
+#                 return result["rank"]
+#         except Exception as e:
+#             if f'race/{race_name}/{year}/result' == result["stage_url"]:
+#                 return result["rank"]
+#         if f'race/{race_name}/{year}' in result["stage_url"]:
+#             did_participate = True
+#     if did_participate:
+#         return "Did not finish"
+#     return None
 
 
 if __name__ == "__main__":
@@ -114,7 +118,7 @@ if __name__ == "__main__":
 
     # get_metric()
 
-    print(get_ranking("primož-roglič","tour-de-france",2024))
+    print(get_ranking("remco-evenepoel","tour-de-france",2024))
     # from procyclingstats import RiderResults
     # rider_results = RiderResults("rider/alberto-contador/results/final-5k-analysis")
     # # for normal results table use "rider/alberto-contador/results" URL
