@@ -31,7 +31,6 @@ with open("racename.csv", "r", encoding="utf-8") as file:
         # Append the data as a dictionary
         race_data.append({
             "race_name": race_name,
-            "is_one_day_race": one_day,
             "category": race_category,
         })
 
