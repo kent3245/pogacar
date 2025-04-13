@@ -14,27 +14,27 @@ def remove_accents(input_str):
 
 
 def get_ranking(player,race_name,year):
-    try:
-        stage = Stage(f'race/{race_name}/{year}/gc').results()
-        # print(json.dumps(stage,indent=4))
-        for result in stage:
-            if remove_accents(result["rider_url"])== remove_accents(f'rider/{player}'):
-                return result["rank"]
-    except Exception as e:
-        stage = Stage(f'race/{race_name}/{year}/result').results()
-        # print(json.dumps(stage,indent=4))
-        for result in stage:
-            # print(remove_accents(result["rider_url"]))
-            # print(remove_accents(f'rider/{player}'))
-            if remove_accents(result["rider_url"]) == remove_accents(f'rider/{player}'):
-                return result["rank"]
-    return None
+    # try:
+    #     stage = Stage(f'race/{race_name}/{year}/gc').results()
+    #     # print(json.dumps(stage,indent=4))
+    #     for result in stage:
+    #         if remove_accents(result["rider_url"])== remove_accents(f'rider/{player}'):
+    #             return result["rank"]
+    # except Exception as e:
+    #     stage = Stage(f'race/{race_name}/{year}/result').results()
+    #     # print(json.dumps(stage,indent=4))
+    #     for result in stage:
+    #         # print(remove_accents(result["rider_url"]))
+    #         # print(remove_accents(f'rider/{player}'))
+    #         if remove_accents(result["rider_url"]) == remove_accents(f'rider/{player}'):
+    #             return result["rank"]
+    # return None
     print(player,race_name,year)
     stage = Stage(f'race/{race_name}/{year}/gc').results()
     for result in stage:
         print(result["rider_url"])
         print(result["rider_name"])
-        if result["rider_url"] == "rider/tadej-pogacar":
+        if result["rider_url"] == "rider/remco-evenepoel":
             print(result)
             break
         
@@ -76,6 +76,8 @@ def final_csv():
 if __name__ == "__main__":
     # stage = Stage("race/tour-de-france/2024/gc")
     # print(json.dumps(stage.results(),indent=4))
-    # print(get_ranking("tadej-pogačar","giro-d-italia",2024))
-    final_csv()
+    # print(ge    print(get_ranking("remco-evenepoel","paris-nice",2024))
+    print(get_ranking("remco-evenepoel","paris-nice",2024))
+
+    # final_csv()
 

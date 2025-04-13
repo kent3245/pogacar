@@ -118,7 +118,7 @@ if __name__ == "__main__":
 
     # get_metric()
 
-    print(get_ranking("remco-evenepoel","tour-de-france",2024))
+    print(get_ranking("remco-evenepoel","paris-nice",2024))
     # from procyclingstats import RiderResults
     # rider_results = RiderResults("rider/alberto-contador/results/final-5k-analysis")
     # # for normal results table use "rider/alberto-contador/results" URL
