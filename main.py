@@ -1,5 +1,5 @@
 
-from procyclingstats import Rider, Race
+from procyclingstats import Rider, Race, RiderResults, Team, RiderResults
 import json
 import csv
 import pandas as pd
@@ -93,12 +93,32 @@ def get_metric():
     print(lists)
     add_col(lists, path_name)
 
+def get_ranking(player,race_name,year):
+    rider_results = RiderResults(f'rider/{player}/results')
+    print(json.dumps(rider_results.parse(),indent=4))
+    did_participate = False
+    for result in rider_results.parse()["results"]:
+        if f'race/{race_name}/{year}/gc' == result["stage_url"]:
+            return result["rank"]
+        if f'race/{race_name}/{year}' in result["stage_url"]:
+            did_participate = True
+    if did_participate:
+        return "Did not finish"
+    return None
+
 
 if __name__ == "__main__":
     # Example usage of the add_col function
 
     # print("Columns added successfully.")
-    get_metric()
+
+    # get_metric()
+
+    print(get_ranking("primož-roglič","tour-de-france",2024))
+    # from procyclingstats import RiderResults
+    # rider_results = RiderResults("rider/alberto-contador/results/final-5k-analysis")
+    # # for normal results table use "rider/alberto-contador/results" URL
+    # print(json.dumps(rider_results.final_n_km_results(),indent=4))
 
 #     df = pd.read_csv('rider.csv')
 
